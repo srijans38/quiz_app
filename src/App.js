@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import dotsHor from './assets/dots_horizontal.png';
 import dotsVer from './assets/dots_vertical.png';
 import Button from './components/Button/Button';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import QuizContainer from './components/QuizContainer/QuizContainer';
 import {
   DispatchContext,
@@ -62,6 +62,9 @@ function App() {
                   ).toFixed(2)}
                   %
                 </h4>
+                <Button onClick={() => dispatch({ type: 'reset' })}>
+                  Reset
+                </Button>
               </div>
             )}
           </div>

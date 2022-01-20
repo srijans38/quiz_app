@@ -40,6 +40,15 @@ export function quizReducer(state, action) {
           : state.correctAnswers,
       };
     }
+
+    case 'reset': {
+      return {
+        ...state,
+        currentQuestion: 0,
+        correctAnswers: 0,
+        quizState: 'ready',
+      };
+    }
     default: {
       return state;
     }
