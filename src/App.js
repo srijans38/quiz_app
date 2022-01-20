@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import dotsHor from './assets/dots_horizontal.png';
 import dotsVer from './assets/dots_vertical.png';
+import Button from './components/Button/Button';
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
         role="presentation"
         width={250}
       />
-
-      <div className="quiz"></div>
+      <div className="quiz">
+        <Button onClick={() => console.log('click')}>Start Quiz</Button>
+      </div>
     </div>
   );
 }
