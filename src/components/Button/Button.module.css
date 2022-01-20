@@ -7,4 +7,11 @@
   padding-block: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
+  width: max-content;
+}
+
+.btn:disabled {
+  border: 2px solid #bbb;
+  color: #bbb;
+  cursor: not-allowed;
 }
