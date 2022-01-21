@@ -19,6 +19,7 @@ export function quizReducer(state, action) {
       return {
         ...state,
         quizState: 'running',
+        startTime: Date.now(),
       };
     }
     case 'submitAnswer': {
@@ -47,6 +48,8 @@ export function quizReducer(state, action) {
         currentQuestion: 0,
         correctAnswers: 0,
         quizState: 'ready',
+        startTime: null,
+        endTime: null,
       };
     }
     default: {
@@ -59,8 +62,9 @@ export const initialState = {
   quizState: 'init',
   questions: null,
   currentQuestion: null,
-  currentAnswer: '',
   correctAnswers: 0,
+  startTime: null,
+  endTime: null,
 };
 
 export const StateContext = createContext();

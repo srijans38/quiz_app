@@ -4,11 +4,12 @@ import Button from '../Button/Button';
 import styles from './QuizContainer.module.css';
 
 export default function QuizContainer() {
-  const { questions, currentQuestion, totalQuestions, currentAnswer } =
+  const { questions, currentQuestion, totalQuestions } =
     useContext(StateContext);
 
   const dispatch = useContext(DispatchContext);
   const [answer, setAnswer] = useState('');
+  const [isDisabled, setIsDiasbled] = useState(false);
   return (
     <div className={styles.container}>
       <div className={styles.top_section}>
@@ -21,7 +22,22 @@ export default function QuizContainer() {
         <h4>
           QUESTION {currentQuestion + 1} of {totalQuestions}
         </h4>
-        <p className={styles.question}>{questions[currentQuestion].question}</p>
+        <div
+          className={styles.questionContainer}
+          style={{ gridTemplateColumns: `repeat(${totalQuestions}, 100%)` }}
+          onTransitionEnd={(e) => {
+            setIsDiasbled(false);
+          }}
+        >
+          {questions.map((q) => (
+            <p
+              className={styles.question}
+              style={{ transform: `translate(-${currentQuestion * 100}%)` }}
+            >
+              {q.question}
+            </p>
+          ))}
+        </div>
       </div>
       <div className={styles.bottom_section}>
         <div className={styles.answer_container}>
@@ -30,6 +46,7 @@ export default function QuizContainer() {
             onSubmit={(e) => {
               e.preventDefault();
               dispatch({ type: 'submitAnswer', payload: answer });
+              setIsDiasbled(true);
               setAnswer('');
             }}
           >
@@ -38,6 +55,7 @@ export default function QuizContainer() {
               name="answer"
               id="answer"
               autoFocus
+              disabled={isDisabled}
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className={styles.answer}
