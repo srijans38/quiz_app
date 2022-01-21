@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react';
 import { DispatchContext, StateContext } from '../../utils/quizReducer';
 import Button from '../Button/Button';
 import RightLottie from '../RightLottie/RightLottie';
+import Timer from '../Timer/Timer';
 import WrongLottie from '../WrongLottie/WrongLottie';
 import styles from './QuizContainer.module.css';
 
@@ -13,6 +14,7 @@ export default function QuizContainer() {
   const [answer, setAnswer] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [hintSeen, setHintSeen] = useState(false);
   const inputRef = useRef();
 
   return (
@@ -22,6 +24,7 @@ export default function QuizContainer() {
           <h4>TOPIC</h4>
           <h4>{questions[currentQuestion].category}</h4>
         </div>
+        <Timer action={isDisabled ? 'pause' : 'play'} />
       </div>
       <div>
         <h4>
@@ -54,6 +57,7 @@ export default function QuizContainer() {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
+              setIsDisabled(true);
               if (
                 questions[currentQuestion].answer.toLowerCase() ===
                 answer.toLowerCase()
@@ -63,9 +67,12 @@ export default function QuizContainer() {
                 setIsCorrect(false);
               }
               await new Promise((resolve) => setTimeout(resolve, 1300));
-              dispatch({ type: 'submitAnswer', payload: answer });
+              dispatch({
+                type: 'submitAnswer',
+                payload: hintSeen ? '' : answer,
+              });
               setIsCorrect(null);
-              setIsDisabled(true);
+              setHintSeen(false);
               setAnswer('');
             }}
           >
@@ -84,8 +91,15 @@ export default function QuizContainer() {
           </form>
         </div>
         <div className={styles.solution}>
-          <p>Stuck ?</p>
-          <Button>See Solution</Button>
+          {!hintSeen && (
+            <>
+              <p>Stuck ?</p>
+              <Button onClick={() => setHintSeen(true)}>See Solution</Button>
+            </>
+          )}
+          {hintSeen && (
+            <p className={styles.hint}>{questions[currentQuestion].answer}</p>
+          )}
         </div>
       </div>
     </div>

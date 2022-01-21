@@ -11,6 +11,7 @@ import {
   quizReducer,
   StateContext,
 } from './utils/quizReducer';
+import Results from './components/Results/Results';
 
 function App() {
   const [state, dispatch] = useReducer(quizReducer, initialState);
@@ -56,21 +57,7 @@ function App() {
                 </Button>
               )}
               {state.quizState === 'running' && <QuizContainer />}
-              {state.quizState === 'completed' && (
-                <div>
-                  <h4>
-                    Accuracy:{' '}
-                    {(
-                      (state.correctAnswers / state.totalQuestions) *
-                      100
-                    ).toFixed(2)}
-                    %
-                  </h4>
-                  <Button onClick={() => dispatch({ type: 'reset' })}>
-                    Reset
-                  </Button>
-                </div>
-              )}
+              {state.quizState === 'completed' && <Results />}
             </div>
           </div>
         </div>

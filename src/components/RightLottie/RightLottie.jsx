@@ -14,7 +14,6 @@ export default function RightLottie(props) {
       style={{
         position: 'absolute',
         inset: '0',
-        scale: '1.5',
         background: 'linear-gradient(to right, #20622A, #48B566 131.71%)',
       }}
     ></Lottie>

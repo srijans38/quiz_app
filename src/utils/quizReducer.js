@@ -31,6 +31,7 @@ export function quizReducer(state, action) {
         return {
           ...state,
           quizState: 'completed',
+          endTime: Date.now(),
         };
       }
       return {

@@ -1,0 +1,11 @@
+.timer_container {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  color: white;
+  background: rgb(47 47 47 / 0.36);
+  padding: 0.5rem;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+}
