@@ -4,6 +4,7 @@ nav {
   max-width: 1440px;
   margin-inline: auto;
   padding-top: 2.6rem;
+  align-items: center;
 }
 
 .desktop-nav {
