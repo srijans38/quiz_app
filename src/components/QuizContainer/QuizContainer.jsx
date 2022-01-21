@@ -9,7 +9,7 @@ export default function QuizContainer() {
 
   const dispatch = useContext(DispatchContext);
   const [answer, setAnswer] = useState('');
-  const [isDisabled, setIsDiasbled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   return (
     <div className={styles.container}>
       <div className={styles.top_section}>
@@ -26,7 +26,7 @@ export default function QuizContainer() {
           className={styles.questionContainer}
           style={{ gridTemplateColumns: `repeat(${totalQuestions}, 100%)` }}
           onTransitionEnd={(e) => {
-            setIsDiasbled(false);
+            setIsDisabled(false);
           }}
         >
           {questions.map((q) => (
@@ -46,7 +46,7 @@ export default function QuizContainer() {
             onSubmit={(e) => {
               e.preventDefault();
               dispatch({ type: 'submitAnswer', payload: answer });
-              setIsDiasbled(true);
+              setIsDisabled(true);
               setAnswer('');
             }}
           >
