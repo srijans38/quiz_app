@@ -82,6 +82,7 @@ export default function QuizContainer() {
               id="answer"
               ref={inputRef}
               autoFocus
+              required
               disabled={isDisabled}
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
