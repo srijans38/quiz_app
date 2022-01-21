@@ -84,6 +84,7 @@ export default function QuizContainer() {
               autoFocus
               required
               disabled={isDisabled}
+              autoComplete="off"
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className={styles.answer}
