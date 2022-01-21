@@ -48,6 +48,11 @@ function App() {
           />
           <div className="central-container">
             <div className="quiz">
+              {state.quizState === 'init' && (
+                <Button disabled style={{ alignSelf: 'center' }}>
+                  Loading...
+                </Button>
+              )}
               {state.quizState === 'ready' && (
                 <Button
                   onClick={() => dispatch({ type: 'startQuiz' })}
