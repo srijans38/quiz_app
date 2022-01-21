@@ -31,6 +31,9 @@ export function quizReducer(state, action) {
         return {
           ...state,
           quizState: 'completed',
+          correctAnswers: isCorrect
+            ? state.correctAnswers + 1
+            : state.correctAnswers,
           endTime: Date.now(),
         };
       }
