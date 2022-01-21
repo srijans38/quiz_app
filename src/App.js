@@ -45,28 +45,33 @@ function App() {
             role="presentation"
             width={250}
           />
-          <div className="quiz">
-            {state.quizState === 'ready' && (
-              <Button onClick={() => dispatch({ type: 'startQuiz' })}>
-                Start Quiz
-              </Button>
-            )}
-            {state.quizState === 'running' && <QuizContainer />}
-            {state.quizState === 'completed' && (
-              <div>
-                <h4>
-                  Accuracy:{' '}
-                  {(
-                    (state.correctAnswers / state.totalQuestions) *
-                    100
-                  ).toFixed(2)}
-                  %
-                </h4>
-                <Button onClick={() => dispatch({ type: 'reset' })}>
-                  Reset
+          <div className="central-container">
+            <div className="quiz">
+              {state.quizState === 'ready' && (
+                <Button
+                  onClick={() => dispatch({ type: 'startQuiz' })}
+                  style={{ alignSelf: 'center' }}
+                >
+                  Start Quiz
                 </Button>
-              </div>
-            )}
+              )}
+              {state.quizState === 'running' && <QuizContainer />}
+              {state.quizState === 'completed' && (
+                <div>
+                  <h4>
+                    Accuracy:{' '}
+                    {(
+                      (state.correctAnswers / state.totalQuestions) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </h4>
+                  <Button onClick={() => dispatch({ type: 'reset' })}>
+                    Reset
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </DispatchContext.Provider>

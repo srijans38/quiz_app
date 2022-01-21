@@ -26,17 +26,26 @@
   z-index: -1;
 }
 
+.central-container {
+  padding-inline: 2rem;
+  margin-top: 15rem;
+}
+
 .quiz {
   max-width: 800px;
-  width: 800px;
-  height: 350px;
+  min-height: 350px;
   background: linear-gradient(to right, #6776ff, #80ffdb 118%);
   border: 1px solid #d4d4d4;
   border-radius: 5px;
-  margin-inline: auto;
-  margin-top: 15rem;
   display: flex;
-  align-items: center;
+  margin-inline: auto;
+  align-items: stretch;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .dotshor {
+    display: none;
+  }
 }

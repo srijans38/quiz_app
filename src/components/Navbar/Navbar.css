@@ -19,3 +19,31 @@ nav > ul {
   content: '⌄';
   margin-left: 0.2rem;
 }
+
+.expander {
+  display: none;
+  outline: none;
+  border: none;
+  background: transparent;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.expander > svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .expander {
+    display: block;
+  }
+
+  nav {
+    padding-inline: 2rem;
+  }
+}
